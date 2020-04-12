@@ -37,6 +37,19 @@ namespace Uno.Service.Models
             this.Face = face;
         }
 
+        public UnoCard(int color, int face)
+        {
+            if (color < (int)CardColor.Max && face < (int)CardFace.Max)
+            {
+                this.Color = IntToCardColor(color);
+                this.Face = IntToCardFace(face);
+            }
+            else
+            {
+                throw new Exception("Error creating card. Out of range values.");
+            }
+        }
+
         public CardColor Color { get; private set; }
         public CardFace Face { get; private set; }
 
@@ -56,12 +69,9 @@ namespace Uno.Service.Models
             return value > 9 ? -1 : value;
         }
 
-        public static CardFace? IntToCardFace(int cardInt)
+        public static CardFace IntToCardFace(int cardInt)
         {
-            if(cardInt < (int)CardFace.Max)
-                return (CardFace)cardInt;
-
-            return null;
+            return (CardFace)cardInt;
         }
 
         public static int CardColorToInt(CardColor cardColor)
@@ -69,12 +79,9 @@ namespace Uno.Service.Models
             return (int)cardColor;
         }
 
-        public static CardColor? IntToCardColor(int colorInt)
+        public static CardColor IntToCardColor(int colorInt)
         {
-            if (colorInt < (int)CardColor.Max)
-                return (CardColor)colorInt;
-
-            return null;
+            return (CardColor)colorInt;
         }
 
         public static string CardColorToString(CardColor cardColor)

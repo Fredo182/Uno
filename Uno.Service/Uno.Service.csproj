@@ -8,7 +8,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Models\UnoDeck.cs" />
     <Compile Remove="Class1.cs" />
   </ItemGroup>
 </Project>
