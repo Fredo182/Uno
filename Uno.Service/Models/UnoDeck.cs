@@ -46,6 +46,17 @@ namespace Uno.Service.Models
             return Cards.Any();
         }
 
+        public UnoCard StartDraw()
+        {
+            var card = Cards[0];
+            while (card.Color != UnoCard.CardColor.Wild)
+            {
+                Shuffle();
+                card = Cards[0];
+            }
+            return Draw();
+        }
+
         public UnoCard Draw()
         {
             var card = Cards[0];
